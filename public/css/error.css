@@ -1,0 +1,31 @@
+.error-wrapper {
+  text-align: center;
+  padding-top: 50px;
+}
+
+.error-wrapper h1 {
+  color: #007acc; /* Blue shade for the error title */
+  margin-bottom: 20px;
+}
+
+.error-wrapper p {
+  color: #666; /* Slightly darker text for readability */
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+a button {
+  background-color: #007acc; /* Blue background for the button */
+  color: #fff; /* White text for the button */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px; /* Rounded corners for the button */
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+a button:hover {
+  transform: scale(1.1) ; /* Increase the size of the button on hover */
+  transition: transform 0.3s ease-in-out; 
+  background-color: #005fa3; /* Darker blue for button hover state */
+}

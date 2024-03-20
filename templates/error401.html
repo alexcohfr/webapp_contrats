@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Erreur 401 - Accès Non Autorisé</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/error.css') }}" />
+</head>
+    <body>
+        <div class="error-wrapper">
+            <h1>Erreur 401</h1>
+            <p>Accès non autorisé.</p>
+            <p>Veuillez vous connecter pour accéder à cette page.</p>
+            <a href="/login"><button>Se connecter</button></a>
+            <a href="/"><button>Retour à l'accueil</button></a>
+        </div>
+    </body>
+</html>

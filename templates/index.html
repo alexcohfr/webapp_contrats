@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<!--=== Coding by CodingLab | www.codinglabweb.com === -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+     
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <!----======== Favicon ======== -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    
+    
+    <title>Contrats Generator public (version de test non fonctionnel)</title> 
+</head>
+<body>
+    <div class="container">
+        <header>Demeter Contrats</header>
+
+        <form action="/download" method="post">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Details personnels</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>NOM :</label>
+                            <input type="text" placeholder="Nom de l'employé" oninput="this.value = this.value.toUpperCase()" 
+                            id = "nom" name="nom">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Prénom :</label>
+                            <input type="text" placeholder="Prénom de l'employé"
+                            id="prénom" name="prénom">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Date de naissance :</label>
+                            <input type="date" 
+                            id= "date-naissance" name="date-naissance">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Sexe :</label>
+                            <select id="sexe" name="sexe">
+                                <option value="Femme">Femme</option>
+                                <option value="Homme">Homme</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Nationalité :</label>
+                            <input type="text" value="Française" id="nationalite" name="nationalité" disabled>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Né à l'étranger :</label> 
+                            <input type="checkbox" class="checkbox-field" id="checkbox-etranger" name="etranger">
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="Lieu de naissance">
+                    <span class="title">Lieu de naissance</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Ville :</label>
+                            <input type="text" placeholder="Ville de naissance" id="ville-naissance" name="ville-naissance">
+                            <ul id="resultats-naissance"></ul>
+                        </div>
+
+                        <div class="input-field"> <!-- A changer en pays si né à l'étranger est coché -->
+                            <label id="dep-naissance-label">Département :</label>
+                            <input type="number" placeholder="Département de naissance" id="dep-naissance" name="dep-naissance">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Numéro de Sécurité Sociale :</label>
+                            <div class="double-input-field">
+                                <input type="text" placeholder="Numéro de Sécurité Sociale" id="num-sécu" name="sécu-sociale">
+                                <label for="checkbox-sécu">À  venir:</label>
+                                <input type="checkbox" class="checkbox-field-double" id="checkbox-sécu" name="sécu-sociale-a-venir"> 
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
+                <div class="Adresse">
+                    <span class="title">Adresse</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Numéro et Rue :</label>
+                            <input type="text" placeholder="Numéro et Rue"  class="form-control" id="adresse-input" name="numéro-rue" data-toggle="tooltip" data-placement="top">
+                            <ul id="resultats"></ul>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Code Postal :</label>
+                            <input type="number" placeholder="Code Postal" class="form-control" id="cp" name="cp-adresse" >
+                        </div>
+
+                        <div class="input-field">
+                            <label>Ville :</label>
+                            <input type="text" placeholder="Ville" class="form-control" id="ville" name="ville-adresse" >
+                        </div>
+                    </div>
+                </div>
+                
+
+                    <button class="nextBtn" type="button" id="nextpage-button">
+                        <span class="btnText">Next</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+            </div>
+
+            <div class="form second">
+                <div class="details professionnels">
+                    <span class="title">Type de contrat</span>
+
+                    <div class="fields">                            
+                        <div class="input-field">
+                            <label>Type de contrat :</label>
+                            <div class="double-input-field" id="type-contrat-div">
+                                <select id="type-contrat" name="type-contrat">
+                                    <option value = "default" selected disabled>Choisir une option</option>
+                                    <option value="CDI">CDI</option>
+                                    <option value="CDD">CDD</option>
+                                </select>
+                                <select required name="poste">
+                                     <option value = "default" selected disabled>Poste</option>
+                                     <option value="hotesse">Hotesse d'accueil</option>
+                                     <option value="coord_site">Coordinatrice de site</option>
+                                     <option value="Hôtesse volante multisites">Hôtesse volante multisites</option>
+                                     <option value="concierge">Concierge</option>
+                                     <option value="autre">Autre</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                            
+
+                        <div class="input-field">
+                            <label>Période d'essai :</label>
+                            <select name="période-essai">
+                                <option value = "default" selected disabled>Choisir une option</option>
+                                <option value="ren">Renouvelable</option>
+                                <option value="non_ren">Non Renouvelable</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <label>Durée de la période d'essai :</label>
+                            <div class="double-input-field">
+                                <select name="durée-période-essai">
+                                    <option value = "default" selected disabled>Choisir une option</option>
+                                    <option value="Mois">Mois</option>
+                                    <option value="Jours">Jours</option>
+                                </select>
+                                <input name="tps_periode_essai" type="number" step=0.01 placeholder="Nombre" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="details rémunération">
+                    <span class="title">Rémunération</span>
+
+                    <div class="fields">                            
+                        <div class="input-field" id="rémunération-div">
+                            <label>Mode de rémunération :</label>
+                            <select id="rémunération-input" name="rémunération-type">
+                                <option value = "default" selected disabled>Choisir le type de rémunération</option>
+                                <option value="Heure">Heure</option>
+                                <option value="Jour">Jour</option>
+                                <option value="Cadre">Cadre</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label id="salaire-label">Taux Horaire :</label>
+                                <div class="double-input-field">
+                                    <input type="number" step="0.01" placeholder="Taux Horaire" id="salaire" name="salaire">
+                                    <label id="smic-checbox-label">Smic {{ smic }}:</label> <!-- A décocher si cadre est sélectionné -->
+                                    <input type="checkbox" class="checkbox-field-double" id="smic-checbox" id="smic" name="smic">
+                                </div>
+                        </div>
+                        <div class="input-field">
+                            <label for="">Echelon et coefficient :</label>
+                                <div class="double-input-field">
+                                    <input type="number" placeholder="Echelon" id="echelon" name="echelon">
+                                    <input type="number" placeholder="Coefficient" id="coefficient" name="coefficient">
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="details embauche">
+                    <span class="title">Détails Embauche</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Date d'embauche :</label>
+                            <input type="date" name="date-embauche">
+                        </div>
+
+                        <div class="input-field" id="jours-formation">
+                            <label>Nombre de jours de formation :</label>
+                            <select id="nbreformation" name="nbre_jours_formations">
+                                <option value = "default" disabled selected>Choisir une option</option>
+                                <option value="0">Aucun</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                        <div class="input-field" style="display: none;" id="date-fin-cdd">
+                            <label>Date de fin de CDD :</label>
+                            <input type="date" id="date-fin-input" name="date-fin-cdd">
+                        </div>
+                        <div class="input-field" id="nbre-heure">
+                            <label>Nombre d'heures par semaine:</label>
+                            <input type="number" step="0.01" id="nbre-heure-input" name="nbre-heure" placeholder = "Volume Horaire">
+                        </div>
+                    </div>
+                </div>  
+                <span class="title" id="label-formation">Dates formation</span>
+                <div class="dates-formation" id="divformation">
+                    
+                    <div class="fields">
+                        <div class="input-field" id="formation1-div">
+                            <label>Premier jour de formation :</label>
+                            <input type="date" id="formation1" name="formation1">
+                        </div>
+
+                        <div class="input-field" style="display: none;" id="formation2-div">
+                            <label>Second jour de formation :</label>
+                            <input type="date" id="formation2" name="formation2">
+                        </div>
+
+                        <div class="input-field" style="display: none;" id="formation3-div">
+                            <label>Troisième jour de formation :</label>
+                            <input type="date" id="formation3" name="formation3">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                    <div class="buttons">
+                        <div class="backBtn">
+                            <i class="uil uil-navigator"></i>
+                            <span class="btnText">Back</span>
+                        </div>
+                        
+                        <button class="sumbit"  type="submit" id="submit_button">
+                            <span class="btnText">Submit</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                    </div>
+                </div> 
+            </div>
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='script/script.js') }}"></script>
+</body>
+</html>

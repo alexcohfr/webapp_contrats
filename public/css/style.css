@@ -1,0 +1,304 @@
+/* ===== Google Font Import - Poppins ===== */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #4070f4;
+}
+.container{
+    position: relative;
+    max-width: 900px;
+    width: 100%;
+    border-radius: 6px;
+    padding: 30px;
+    margin: 0 15px;
+    background-color: white;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+.container header{
+    position: relative;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+.container header::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 3px;
+    width: 27px;
+    border-radius: 8px;
+    background-color: #4070f4;
+}
+
+
+
+
+/* Style personnalisé pour la checkbox */
+.input-field input[type='checkbox'] {
+    -webkit-transform: scale(0.4); /* Réduire la taille pour Safari et Chrome */
+    -ms-transform: scale(0.4); /* Réduire la taille pour IE */
+    transform: scale(0.4); /* Réduire la taille pour les autres navigateurs */
+    position: relative;
+    top: 50%;
+    transform: scale(0.4);
+    /* Autres styles existants... */
+}
+
+
+.container form{
+    position: relative;
+    margin-top: 16px;
+    min-height: 585px;
+    background-color: #fff;
+    overflow: hidden;
+}
+.container form .form{
+    position: absolute;
+    background-color: #fff;
+    transition: 0.3s ease;
+}
+.container form .form.second{
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(100%);
+    width: 100%;
+}
+form.secActive .form.second{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+}
+form.secActive .form.first{
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+}
+
+.container form .title{
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 6px 0;
+    color: #333;
+}
+.container form .fields{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+}
+form .fields .input-field{
+    position: relative;
+    display: flex;
+    width: calc(100% / 3 - 15px);
+    flex-direction: column;
+    margin: 4px 0;
+    margin-right: 15px;
+}
+
+form .fields .input-field label{
+    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+}
+
+.double-input-field{
+    display: flex;
+    white-space: nowrap;
+    width: 100%;
+    /* max-width: 265px; */
+    justify-content: space-between;
+    width: calc(100% / 2 - 15px);
+}
+
+.double-input-field input[type="checkbox"]{
+    transform: scale(1);
+    margin-top: 10px;
+}
+
+.input-field input, select{
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    padding: 0 15px;
+    height: 42px;
+    margin: 8px 0;
+}
+
+
+#resultats{
+    position: absolute;
+    top: 100%; /* juste en dessous de l'input */
+    left: 0;
+    width: 100%; /* correspond à la largeur du conteneur parent */
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* optionnel, pour un peu d'ombre */
+    z-index: 10; /* s'assure que la liste est au-dessus des autres éléments */
+    border: 1px solid white;
+    border-top: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px;
+    overflow-y: hidden;
+}
+#resultats li{
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+#resultats li:hover{
+    background-color: #e9e9e9;
+}
+
+#resultats-naissance{
+    position: absolute;
+    top: 100%; /* juste en dessous de l'input */
+    left: 0;
+    width: 100%; /* correspond à la largeur du conteneur parent */
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* optionnel, pour un peu d'ombre */
+    z-index: 10; /* s'assure que la liste est au-dessus des autres éléments */
+    border: 1px solid #c4c4c400;
+    border-top: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px;
+    overflow-y: hidden;
+}
+
+#resultats-naissance li{
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+
+#resultats-naissance li:hover{
+    background-color: #e9e9e9;
+}
+
+.double-input-field input{
+    margin-right: 15px;
+    max-width: 125px;
+}
+
+.double-input-field select{
+    max-width: 125px;
+    margin-right: 15px;
+}
+
+
+
+.input-field input:focus,
+.input-field select:focus{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.23);
+}
+.input-field select,
+.input-field input[type="date"]{
+    color: #707070;
+}
+.input-field input[type="date"]:valid{
+    color: #333;
+}
+.container form button, .backBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    max-width: 200px;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    margin: 25px 0;
+    background-color: #4070f4;
+    transition: all 0.3s linear;
+    cursor: pointer;
+}
+.container form .btnText{
+    font-size: 14px;
+    font-weight: 400;
+}
+form button:hover{
+    background-color: #265df2;
+}
+form button i,
+form .backBtn i{
+    margin: 0 6px;
+}
+form .backBtn i{
+    transform: rotate(180deg);
+}
+form .buttons{
+    display: flex;
+    align-items: center;
+}
+form .buttons button , .backBtn{
+    margin-right: 14px;
+}
+
+
+
+/* Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    appearance: none; 
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
+@media (max-width: 750px) {
+    .container form{
+        overflow-y: scroll;
+    }
+    .container form::-webkit-scrollbar{
+       display: none;
+    }
+    form .fields .input-field{
+        width: calc(100% / 2 - 15px);
+    }
+}
+
+@media (max-width: 550px) {
+    form .fields .input-field{
+        width: 100%;
+    }
+}
+
+.input-field input:invalid{
+    border: 2px solid red;
+}
+
+.input-field select:invalid{
+    border: 2px solid red;
+}
+
+.error {
+    border: 2px solid red;
+}

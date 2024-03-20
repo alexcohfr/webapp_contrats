@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmation données contrat</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_tampon.css') }}" />
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Confirmation des données du contrat</h1>
+        <p>Voici les données que vous avez renseignées pour le contrat :</p>
+        <div class="box-wrapper">
+            <div class="list-box" id="box-vie">
+                    <h2>Données personnelles de l'employé(e) :</h2>
+                <ul>
+                    {% for key, value in data.vie.items() %}
+                        <li>{{ key }} : {{ value }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="list-box" id="box-contrat">
+                <h2>Spécificités du contrat :</h2>
+                <ul>
+                    {% for key, value in data.contrat.items() %}
+                        <li>{{ key }} : {{ value }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="wrapper-choix">
+            <script>
+                function thanks() {
+                    setTimeout(function () {
+                        document.location.pathname = "/end";
+                    }, 1000);
+                }
+            </script>
+            <a href="{{ filename }}">
+                <button onclick="thanks()">Télécharger le contrat</button>
+            </a>
+            <button onclick="window.history.back();">Retour au formulaire</button>
+        </div>
+    </div>
+</body>
+</html>

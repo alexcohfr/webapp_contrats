@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>Contrat téléchargé !</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/end.css') }}" />
+    </head>
+
+    <body>
+        <div id="container">
+            <h1>Contrat téléchargé !</h1>
+            <p>Le contrat a été téléchargé avec succès.</p>
+            <a href="{{ url_for('demeter') }}">Retour à l'accueil</a>
+        </div>
+    </body>
+
+</html>
